@@ -1,0 +1,52 @@
+body{
+    overflow: hidden;
+    
+}
+
+.item1{
+    background:url('https://geneticlab.ru/upload/iblock/d8d/d8d496c17a689a18b7de5f178155d937.jpg');
+    background-size: cover;
+    height:710px ;
+    display: flex;
+    align-items: center;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.item1__about-us{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+}
+
+.item1-text{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.item1__btns{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+
+}
+
+
+
+
+/*.item2{
+
+}*/
+
+
+.item3{
+    background: url('https://www.startus.cc/sites/default/files/styles/company_profile_cover_crop/public/portfolio_single_4.jpg?itok=zvhwaNJp&sc=0755e8c61255402bfd28a43830683c71');
+    height: 200px;
+    filter: grayscale();
+}

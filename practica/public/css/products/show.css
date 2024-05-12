@@ -1,0 +1,43 @@
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    padding: 20px 0;
+}
+
+.prod__img {
+    height: 500px;
+
+}
+
+.prod {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+.prod-line {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+}
+
+
+
+/*
+.prod__name {
+
+}
+.prod__id {
+}
+.prod__descr {
+}
+*/
