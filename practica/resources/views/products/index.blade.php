@@ -30,6 +30,12 @@
             @method('DELETE')
           <input type="submit" value="Удалить товар">
         </form>
+        <form class="list-group-item" action="{{ route('cart.update') }}" method="POST">
+          @csrf
+          @method('PUT')
+          <input hidden value="{{ $product->id }}" name="product_id">
+          <button type="submit" class="btn btn-primary">Добавить в заказ</button>
+      </form>
         </ul>
       </div>
       @endforeach

@@ -16,7 +16,7 @@
         @method('PUT')        
         <input type="text" name='name' value="{{$product->name}}">
         <input type="text" name='description' value="{{$product->description}}">  
-        <input type="file" name="image" value="{{$product->image}}">  
+         
         <input class="mybtn" type="submit" value="Отредактировать">
 
     </form>

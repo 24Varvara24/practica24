@@ -26,8 +26,8 @@
         
         <a href="{{route('products.create')}}">Создать товар</a>
         <a href="{{route('products.index')}}">Все товары</a>
-        <a href="{{route('orders.create')}}">Сделать заказ</a>
-
+        {{-- <a href="{{route('orders.create')}}">Сделать заказ</a> --}}
+        <a href="{{route('cart.show')}}">Корзина</a>
     
         @if (Route::has('login'))
     </nav>

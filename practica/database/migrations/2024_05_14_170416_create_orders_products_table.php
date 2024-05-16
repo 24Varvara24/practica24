@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orders', function (Blueprint $table) {
+        //таблица для связи многое ко многим
+        Schema::create('orders_products', function (Blueprint $table) {
             $table->id();
-            //чей заказ
-            $table->integer('user_id');
-            
-            $table->integer('status_id');
-            //комментарий к заказу
-            
+            $table->integer('products_id');
+            $table->integer('orders_id');
+            $table->integer('amount');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('orders_products');
     }
 };

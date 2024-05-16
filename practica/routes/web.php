@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\CartController;
 //use App\Models\Products;
 
 //отрисовка главной страницы
@@ -17,6 +18,12 @@ Route::get('/', function () {
 Route::resource('/products',ProductsController::class);
 
 Route::resource('/orders',OrdersController::class);
+
+
+Route::singleton('/cart', CartController::class);
+
+
+
 
 
 Route::get('/dashboard', function () {

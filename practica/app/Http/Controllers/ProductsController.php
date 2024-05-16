@@ -14,7 +14,7 @@ class ProductsController extends Controller
     {
         
         $products_all = Products::all();
-        //dd($products_all);
+     
         return view('products.index', compact("products_all"));
     }
 
@@ -36,9 +36,9 @@ class ProductsController extends Controller
         Products::create([
             'name'=>$request->name,
             'description'=>$request->description,
-            'image'=>$request->image
+            
         ]);
-        //dd($request);
+       
         return redirect()->route('products.index');
     }
 
@@ -66,10 +66,13 @@ class ProductsController extends Controller
      */
     public function update(Request $request, Products $product)
     {
-        $product->name = $request->name;
-        $product->description = $request->description;
-        $product->image=$request->image;
-        $product->save();
+        $product->update([
+        'name' => $request->name,
+        'description' => $request->description,
+        
+        ]);
+
+        
 
         return redirect()->route('products.index');
     }

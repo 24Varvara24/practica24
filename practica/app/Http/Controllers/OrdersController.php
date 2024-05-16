@@ -4,74 +4,58 @@ namespace App\Http\Controllers;
 
 use App\Models\Orders;
 use Illuminate\Http\Request;
+use App\Dictionaries\OrderStatus;
 
 class OrdersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
-    {
-
-        $orders=Orders::all();
+    {     
+        //создается связь с owner а с помощью get() делается sql запрос
+        $orders=Orders::with('owner')->get();
         //dd($orders);
         return view('orders.index',compact('orders'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        
-        return view('orders.create');
+        //статусы заказа передаются на стр с формой где они и используются
+        $statuses = OrderStatus::statuses();
+        return view('orders.create',['statuses'=>$statuses]);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-
-        //ПОМЕНЯТЬ!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        Orders::created([
-            'products'=>$request->products,
-            'user_id'=>$request->user_id
+        $order=Orders::create([
+            'user_id' => auth()->user()->id,
+            'status_id' => $request->status_id,  
         ]);
-
-        dd( $request);
+        $order->products()->attach($request->products);
+        //dd( $request);
         return redirect()->route('orders.index');
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Orders $orders)
+    public function show(Orders $order)
     {
-        //
+        //order- готовая таблица , а load- настраивает связь с products
+        $order->load('products');
+        return view('orders.show', compact('order'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Orders $orders)
+    public function edit(Orders $order)
     {
-        //
+        //то же что и в create
+        $statuses = OrderStatus::statuses();
+        return view('orders.edit', compact('order', 'statuses'));
     }
+    public function update(Request $request, Orders $order)
+    { 
+        $order->update([
+            'user_id' => auth()->user()->id,
+            'status_id' => $request->status_id       
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Orders $orders)
-    {
-        //
+        return redirect()->route('orders.index');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Orders $orders)
+    public function destroy(Orders $order)
     {
-        //
+        $order->products()->detach(); 
+        $order->delete();
+        return redirect()->route('orders.index');
     }
 }

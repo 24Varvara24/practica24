@@ -19,7 +19,7 @@
             </div>
             <div class="item1__btns">
                 <div class="mybtn">
-                    <a href="{{route('orders.create')}}">Заказать</a></div>
+                    <a href="{{route('cart.show')}}">Заказать</a></div>
                 <div class="mybtn"><a href="{{route('products.index')}}">Список товаров</a></div>
             </div>
         </div>

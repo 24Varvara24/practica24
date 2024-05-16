@@ -15,7 +15,7 @@
         @csrf
         <input type="text" name='name' placeholder='Название товара'>
         <input type="text" name='description' placeholder='Описание товара'>
-        <input type="file" name="image">
+        
         <input class="mybtn" type="submit" value="Создать товар">
     </form>
 </main>    
